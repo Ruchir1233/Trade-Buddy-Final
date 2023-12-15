@@ -1,0 +1,239 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | TRADE BUDDY</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/media/item_images/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="icon" href="http://127.0.0.1:8000/media/item_images/OLX-Logo.png">
+    <title>TRADE BUDDY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yellowtail&display=swap" rel="stylesheet">
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/media/item_images/style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="http://127.0.0.1:8000/media/item_images/OLX-Logo.png">
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-image: linear-gradient(to right, #FC7869, #F5AE52);
+            border-bottom: 1px solid #D3D6FD;
+            color: #E7E8FB;
+        }
+
+        footer {
+            background-image: linear-gradient(to right, #D3D6FD, #9EA3F3);
+            color: #9EA3F3;
+        }
+    </style>
+</head>
+<body>
+  <bg color="#F5AE52">
+    <nav class="py-4 px-6 flex justify-between items-center bg-gradient-to-r from-rose-400 to-orange-400 shadow-lg">
+        <a href="/" class="text-3xl font-bold text-white hover:text-white transition duration-300">TRADE BUDDY</a>
+        <div class="space-x-6">
+          <a href="{% url 'item:new' %}" class="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300">Sell Item</a>
+          <a href="{% url 'item:items' %}" class="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300">Buy Item</a>
+          {% if user.is_authenticated %}
+              <a href="http://127.0.0.1:8000/logout" class="text-lg font-semibold text-red-600 hover:text-red-800 transition duration-300">Logout</a>
+          {% endif %}
+  
+          {% if request.user.is_authenticated %}
+              <a href="{% url 'conversation:inbox' %}" class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">Inbox</a>
+              <a href="{% url 'dashboard:index' %}" class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">My Ads</a>
+          {% else %}
+              <a href="{% url 'core:signup' %}" class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">Sign Up</a>
+              <a href="{% url 'core:login' %}" class="px-4 py-2 text-lg font-semibold bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition duration-300">Log In</a>
+          {% endif %}
+      </div>
+    </nav>
+    
+    <div class="px-6 py-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="py-6 px-6 flex justify-between bg-gradient-to-r from-indigo-200 to-indigo-400 text-white">
+        <div class="w-2/3 pr-10">
+            <h3 class="mb-5 font-semibold">About</h3>
+            <p class="text-lg">This is a project for Uka Tarsadia University Sem7</p>
+        </div>
+        <div class="w-1/3">
+            <h3 class="mb-5 font-semibold">Menu</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-lg hover:text-blue-300">About</a></li>
+                <li><a href="#" class="text-lg hover:text-blue-300">Contact</a></li>
+                <li><a href="#" class="text-lg hover:text-blue-300">Privacy policy</a></li>
+                <li><a href="#" class="text-lg hover:text-blue-300">Term of use</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Other JS scripts, if any -->
+</body>
+</html> {% endcomment %}
+
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yellowtail&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/media/item_images/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <!-- <link rel="icon" href="http://127.0.0.1:8000/media/item_images/OLX-Logo.png"> -->
+  <title>TRADE BUDDY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Additional styles for the burger menu */
+    #burger-menu {
+        display: none;
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+        .nav-links {
+            display: none;
+        }
+
+        #burger-menu {
+            display: block;
+        }
+    }
+</style>
+  <title>{% block title %}{% endblock %} |TRADE BUDDY</title>
+</head>
+
+<body>
+  <nav class="py-4 px-6 flex justify-between items-center border-b border-gray-200 bg-white shadow-lg">
+    <a href="/" class="text-3xl font-bold text-blue-700 hover:text-blue-900 transition duration-300">TRADE BUDDY</a>
+
+   
+
+     <!-- Burger menu icon -->
+     <div id="burger-menu" onclick="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          class="h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+  </div>
+
+  <div class="space-x-6 nav-links">
+      <!-- Your existing navigation links go here -->
+      <a href="{% url 'item:new' %}"
+          class="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300">Sell Item</a>
+      <a href="{% url 'item:items' %}"
+          class="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300">Buy Item</a>
+      {% if user.is_authenticated %}
+      <a href="http://127.0.0.1:8000/logout"
+          class="text-lg font-semibold text-red-600 hover:text-red-800 transition duration-300">Logout</a>
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'conversation:inbox' %}"
+          class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">Inbox</a>
+      <a href="{% url 'dashboard:index' %}"
+          class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">My
+          Ads</a>
+      {% else %}
+      <a href="{% url 'core:signup' %}"
+          class="px-4 py-2 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-300">Sign
+          Up</a>
+      <a href="{% url 'core:login' %}"
+          class="px-4 py-2 text-lg font-semibold bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition duration-300">Log
+          In</a>
+      {% endif %}
+  </div>
+</nav>
+
+
+
+  {% comment %}
+  <script type="application/javascript" src="https://static.staticsave.com/ruchir/app.js
+        "></script>
+  <script type="application/javascript" src="https://static.staticsave.com/ruchir/main.js
+        "></script>
+  <script type="application/javascript" src="https://static.staticsave.com/ruchir/main.js
+        "></script>
+  <script type="application/javascript" src="https://static.staticsave.com/ruchir/app.js
+        "></script> {% endcomment %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // JavaScript function to toggle the burger menu
+    function toggleMenu() {
+        var navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'none' || navLinks.style.display === '') ? 'block' : 'none';
+    }
+</script>
+  <nav class="header container-fluid">
+    <div class="nav-bar container">
+
+    </div>
+  </nav>
+
+
+
+  <div class="px-6 py-6">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer class="row py-6 px-6  bg-gray-800" style="width: 100%;">
+    <div class="col-md-6 w-1/2 pr-10">
+      <h3 class="mb-5 font-semibold text-gray-200">About</h3>
+
+      <p class="text-lg text-gray-400">Welcome to Trade Buddy, your go-to destination for hassle-free buying and selling! At Trade Buddy, we're passionate about creating a platform that connects people, simplifies transactions, and helps you find exactly what you're looking for.</p>
+    </div>
+
+    <div class="col-md-6 w-1/2">
+      <h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
+
+      <ul class="space-y-2">
+        <li><a href="#" class="text-lg text-blue-500 hover:text-blue-700">About US</a></li>
+        <li><a href="{% url 'core:contact' %}" class="text-lg text-blue-500 hover:text-blue-700">Contact Us</a></li>
+        <li><a href="#" class="text-lg text-blue-500 hover:text-blue-700">Privacy policy</a></li>
+        <li><a href="#" class="text-lg text-blue-500 hover:text-blue-700">Term of use</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>
